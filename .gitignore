@@ -1,0 +1,9 @@
+# Project exclude paths
+/.gradle/
+/build/
+/build/classes/kotlin/main/
+
+## https://github.com/toptal/gitignore/blob/master/templates/AndroidStudio.gitignore
+/.idea
+/.idea/workspace.xml
+/.idea/libraries
