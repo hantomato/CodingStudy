@@ -6,13 +6,26 @@ fun main(args: Array<String>) {
 
 
 
-    runPrime()
+    runFlatMap()
+//    runPrime()
 //    runList()
 //    runString()
 //    runString()
 //    runMap()
 //    runGroupBy()
 
+}
+
+fun runFlatMap() {
+    // 333 55555 22
+    val ret = listOf(3,5,2).flatMap {
+        val emptyList = mutableListOf<Int>()
+        for (i in 1 .. it) {
+            emptyList.add(it)
+        }
+        emptyList
+    }
+    println(ret)
 }
 
 fun runPrime() {
