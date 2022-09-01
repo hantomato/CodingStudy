@@ -2,23 +2,21 @@ package level1
 
 /**
  *
- * 핸드폰 번호 가리기
- * https://school.programmers.co.kr/learn/courses/30/lessons/12948
+ * 짝수와 홀수
+ * https://school.programmers.co.kr/learn/courses/30/lessons/12937
  *
  */
 fun main() {
 
-    fun solution(phone_number: String): String {
-        var answer = ""
-        return answer
+    fun solution(num: Int): String {
+        return if (num % 2 == 0) "Even" else "Odd"
     }
 
-//    "01033334444"	"*******4444"
-//    "027778888"	"*****8888"
+//    3	"Odd"
+//    4	"Even"
 
-    println(solution("01033334444"))
-    println(solution("027778888"))
-
+    println(solution(3))
+    println(solution(4))
 
 }
 
