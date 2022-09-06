@@ -99,10 +99,40 @@ fun main() {
 //    테스트 19 〉	통과 (26.01ms, 65.8MB)
 //    테스트 20 〉	통과 (26.39ms, 65.5MB)
 
+    //
+    fun solution3(n: Int, lost: IntArray, reserve: IntArray): Int {
+        val afterLostList = (1..n).toMutableList()
+        afterLostList.removeAll(lost.toList().sorted())
+        val reserveList = reserve.sorted().toMutableList()
+        reserve.forEach {
+            if(!afterLostList.contains(it)) {
+                reserveList.remove(it)
+                afterLostList.add(it)
+            }
+        }
+
+        (1..n).forEach {
+            if(!afterLostList.contains(it)) {
+                if (it > 1 && reserveList.contains(it - 1)) {
+                    reserveList.remove(it - 1)
+                    afterLostList.add(it)
+                } else if (it < n && reserveList.contains(it + 1)) {
+                    reserveList.remove(it + 1)
+                    afterLostList.add(it)
+                }
+            }
+        }
+
+        return afterLostList.size
+    }
+
+//    7	    [2, 4]	[1, 7]  	6
 //    5	    [2, 4]	[1, 3, 5]	5
 //    5	    [2, 4]	[3]	        4
 //    3	    [3]	    [1]	        2
 
+
+    println(solution(7, intArrayOf(2, 4), intArrayOf(1, 7)))
     println(solution(5, intArrayOf(2, 4), intArrayOf(1, 3, 5)))
     println(solution(5, intArrayOf(2, 4), intArrayOf(3)))
     println(solution(3, intArrayOf(3), intArrayOf(1)))
