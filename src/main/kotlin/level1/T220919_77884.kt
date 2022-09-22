@@ -8,8 +8,14 @@ package level1
 fun main() {
 
     fun solution(left: Int, right: Int): Int {
-        var answer: Int = 0
-        return answer
+        return (left .. right).fold(0) { acc, c->
+            (1 .. c).filter { c % it == 0 }.count()
+                .let {
+                    if (it % 2 == 1) {
+                        acc - c
+                    } else acc + c
+                }
+        }
     }
 
 

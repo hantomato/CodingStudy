@@ -8,8 +8,24 @@ package level1
 fun main() {
 
     fun solution(sizes: Array<IntArray>): Int {
-        var answer: Int = 0
-        return answer
+        return sizes.fold(0 to 0) { acc, c ->
+            var land = acc.first
+            var port = acc.second
+
+            val size1 = Math.max(land, c[0]) * Math.max(port, c[1])
+            val size2 = Math.max(land, c[1]) * Math.max(port, c[0])
+            if (size1 < size2) {
+                land = Math.max(land, c[0])
+                port = Math.max(port, c[1])
+            } else {
+                land = Math.max(land, c[1])
+                port = Math.max(port, c[0])
+            }
+
+            land to port
+        }.let {
+            it.first * it.second
+        }
     }
 
 

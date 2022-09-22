@@ -1,6 +1,7 @@
 package level1
 
 /**
+ * 5
  * 최댓값과 최솟값
  * https://school.programmers.co.kr/learn/courses/30/lessons/12939
  *
@@ -8,8 +9,11 @@ package level1
 fun main() {
 
     fun solution(s: String): String {
-        var answer = ""
-        return answer
+        return s.split(" ")
+            .map { it.toInt() }
+            .let {
+                "${it.minOrNull()} ${it.maxOrNull()}"
+            }
     }
 
 
