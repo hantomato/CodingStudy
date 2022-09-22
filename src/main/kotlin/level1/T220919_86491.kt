@@ -1,5 +1,7 @@
 package level1
 
+import kotlin.math.max
+
 /**
  * 최소직사각형
  * https://school.programmers.co.kr/learn/courses/30/lessons/86491
@@ -12,14 +14,14 @@ fun main() {
             var land = acc.first
             var port = acc.second
 
-            val size1 = Math.max(land, c[0]) * Math.max(port, c[1])
-            val size2 = Math.max(land, c[1]) * Math.max(port, c[0])
+            val size1 = max(land, c[0]) * max(port, c[1])
+            val size2 = max(land, c[1]) * max(port, c[0])
             if (size1 < size2) {
-                land = Math.max(land, c[0])
-                port = Math.max(port, c[1])
+                land = max(land, c[0])
+                port = max(port, c[1])
             } else {
-                land = Math.max(land, c[1])
-                port = Math.max(port, c[0])
+                land = max(land, c[1])
+                port = max(port, c[0])
             }
 
             land to port
@@ -27,6 +29,11 @@ fun main() {
             it.first * it.second
         }
     }
+
+//    테스트 1 〉	통과 (0.53ms, 64.6MB)
+//    테스트 2 〉	통과 (0.52ms, 63.3MB)
+//    테스트 3 〉	통과 (0.60ms, 62.8MB)
+//    테스트 4 〉	통과 (0.53ms, 63.7MB)
 
 
 //    sizes	result
