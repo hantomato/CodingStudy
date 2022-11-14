@@ -10,31 +10,21 @@ import kotlin.math.max
 fun main() {
 
     fun solution(sizes: Array<IntArray>): Int {
-        return sizes.fold(0 to 0) { acc, c ->
-            var land = acc.first
-            var port = acc.second
-
-            val size1 = max(land, c[0]) * max(port, c[1])
-            val size2 = max(land, c[1]) * max(port, c[0])
-            if (size1 < size2) {
-                land = max(land, c[0])
-                port = max(port, c[1])
-            } else {
-                land = max(land, c[1])
-                port = max(port, c[0])
-            }
-
-            land to port
-        }.let {
-            it.first * it.second
+        sizes.maxOf {
+            it[0]
         }
+
+        return sizes.map {
+            if (it[0] > it[1]) {
+                it[1] to it[0]
+            } else {
+                it[0] to it[1]
+            }
+        }.unzip()
+            .let {
+                (it.first.maxOrNull() ?: 0) * (it.second.maxOrNull() ?: 0)
+            }
     }
-
-//    테스트 1 〉	통과 (0.53ms, 64.6MB)
-//    테스트 2 〉	통과 (0.52ms, 63.3MB)
-//    테스트 3 〉	통과 (0.60ms, 62.8MB)
-//    테스트 4 〉	통과 (0.53ms, 63.7MB)
-
 
 //    sizes	result
 //    [[60, 50], [30, 70], [60, 30], [80, 40]]	4000
